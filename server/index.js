@@ -2,7 +2,7 @@
 
 const express = require("express");
 const app = express();
-const port = 5000;
+
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const config = require("./config/key");
@@ -24,6 +24,8 @@ mongoose
   .catch((err) => console.log(err));
 
 app.get("/", (req, res) => res.send("Hello World!~~ 안녕하세요"));
+
+app.get("/api/hello", (req, res) => res.send("hello World!~"));
 
 app.post("/api/users/register", (req, res) => {
   //회원 가입할때 필요한 정보들을 client에서 가져오면
@@ -93,4 +95,7 @@ app.get("/api/users/logout", auth, (req, res) => {
     });
   });
 });
+
+const port = 5000;
+
 app.listen(port, () => console.log(port));
